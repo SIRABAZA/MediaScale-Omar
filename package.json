@@ -39,10 +39,13 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
+    "@upstatement/eslint-config": "^3.0.0",
+    "@upstatement/prettier-config": "^1.1.0",
     "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.3.0",
-    "prettier": "^2.8.8"
+    "prettier": "^3.5.3"
   },
   "lint-staged": {
     "*.{js,css,json,md}": [
