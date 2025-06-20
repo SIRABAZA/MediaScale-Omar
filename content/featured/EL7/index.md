@@ -1,6 +1,6 @@
 ---
 date: '3'
-title: 'Build a Spotify Connected App'
+title: 'EL7'
 cover: './demo.jpeg'
 external: 'https://7lw.ae/'
 slug: '/gatsby-tags'
