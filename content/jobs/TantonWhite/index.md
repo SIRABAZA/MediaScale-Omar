@@ -5,6 +5,9 @@ company: 'Tanton White'
 location: 'Nova Scotia, Canada'
 range: 'MAY 2023 - May 2025'
 url: 'http://tantonwhite.com'
+slug: '/gatsby-tags'
+tags: ['gatsby', 'react', 'tutorial']
+draft: false
 ---
 
 - Collaborated with other creatives and editors on pro-bono projects to craft compelling video content, visual identities, and branded motion assets for local organizations

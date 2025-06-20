@@ -4,6 +4,9 @@ title: 'Tanton White'
 cover: './demo.jpeg'
 github: 'https://tantonwhite.com/'
 external: 'https://tantonwhite.com/'
+slug: '/gatsby-tags'
+tags: ['gatsby', 'react', 'tutorial']
+draft: false
 tech:
   - Getting Viral Ideas
   - Scripting

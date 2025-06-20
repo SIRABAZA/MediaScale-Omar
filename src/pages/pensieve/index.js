@@ -15,7 +15,8 @@ const StyledMainContainer = styled.main`
     a {
       &:hover,
       &:focus {
-        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>⚡</text></svg>")
+        cursor:
+          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>⚡</text></svg>")
             20 0,
           auto;
       }
@@ -143,7 +144,7 @@ const StyledPost = styled.li`
 `;
 
 const PensievePage = ({ location, data }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data?.allMarkdownRemark?.edges || [];
 
   return (
     <Layout location={location}>
@@ -182,13 +183,16 @@ const PensievePage = ({ location, data }) => {
                     <footer>
                       <span className="post__date">{formattedDate}</span>
                       <ul className="post__tags">
-                        {tags.map((tag, i) => (
-                          <li key={i}>
-                            <Link to={`/pensieve/tags/${kebabCase(tag)}/`} className="inline-link">
-                              #{tag}
-                            </Link>
-                          </li>
-                        ))}
+                        {Array.isArray(tags) &&
+                          tags.map((tag, i) => (
+                            <li key={i}>
+                              <Link
+                                to={`/pensieve/tags/${kebabCase(tag)}/`}
+                                className="inline-link">
+                                #{tag}
+                              </Link>
+                            </li>
+                          ))}
                       </ul>
                     </footer>
                   </div>
@@ -207,3 +211,24 @@ PensievePage.propTypes = {
 };
 
 export default PensievePage;
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            description
+            slug
+            date
+            tags
+          }
+        }
+      }
+    }
+  }
+`;

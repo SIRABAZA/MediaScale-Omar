@@ -5,6 +5,9 @@ company: 'Upwork'
 location: 'Remote'
 range: 'March 2019 – Present'
 url: 'https://www.upwork.com/freelancers/~omarzidan'
+slug: '/gatsby-tags'
+tags: ['gatsby', 'react', 'tutorial']
+draft: false
 ---
 
 - Delivered high-quality video editing and motion design services to global clients across tech, lifestyle, and e-commerce sectors

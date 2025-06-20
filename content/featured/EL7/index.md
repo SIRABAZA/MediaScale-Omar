@@ -3,6 +3,9 @@ date: '3'
 title: 'Build a Spotify Connected App'
 cover: './demo.jpeg'
 external: 'https://7lw.ae/'
+slug: '/gatsby-tags'
+tags: ['gatsby', 'react', 'tutorial']
+draft: false
 cta: 'https://7lw.ae/'
 tech:
   - Adobe Premiere Pro

@@ -47,6 +47,18 @@ const StyledTagsContainer = styled.main`
 
 const TagTemplate = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
+
+  if (!data?.allMarkdownRemark) {
+    return (
+      <Layout location={location}>
+        <Helmet title={`Tagged: #${tag}`} />
+        <StyledTagsContainer>
+          <h1>No posts found for #{tag}</h1>
+        </StyledTagsContainer>
+      </Layout>
+    );
+  }
+
   const { edges } = data.allMarkdownRemark;
 
   return (
@@ -124,7 +136,7 @@ TagTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($tag: String!) {
+  query ($tag: String!) {
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }

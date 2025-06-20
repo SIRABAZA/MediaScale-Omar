@@ -5,6 +5,9 @@ company: 'Class A Media'
 location: 'Cupertino, NY'
 range: 'Dec 2023 - present'
 url: 'https://www.classamedia.com/'
+slug: '/gatsby-tags'
+tags: ['gatsby', 'react', 'tutorial']
+draft: false
 ---
 
 - Directed and edited branded video campaigns for high-profile clients across tech and entertainment industries

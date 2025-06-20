@@ -4,6 +4,9 @@ title: 'THE DOLCE DIET'
 cover: './dolcediet.jpg'
 github: 'https://github.com/bchiang7/halcyon-site'
 external: 'https://www.youtube.com/@DolceDiet'
+slug: '/gatsby-tags'
+tags: ['gatsby', 'react', 'tutorial']
+draft: false
 tech:
   - Adobe Premiere Pro
   - After Effects

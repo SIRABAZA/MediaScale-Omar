@@ -135,6 +135,8 @@ const ArchivePage = ({ location, data }) => {
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
+  const projects = data.allMarkdownRemark.edges; // ✅ تم التعريف هنا
+
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
@@ -169,16 +171,8 @@ const ArchivePage = ({ location, data }) => {
             <tbody>
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
-                  const {
-                    date,
-                    github,
-                    external,
-                    ios,
-                    android,
-                    title,
-                    tech,
-                    company,
-                  } = node.frontmatter;
+                  const { date, github, external, ios, android, title, tech, company } =
+                    node.frontmatter;
                   return (
                     <tr key={i} ref={el => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
@@ -194,7 +188,6 @@ const ArchivePage = ({ location, data }) => {
                           tech.map((item, i) => (
                             <span key={i}>
                               {item}
-                              {''}
                               {i !== tech.length - 1 && <span className="separator">&middot;</span>}
                             </span>
                           ))}
@@ -234,6 +227,7 @@ const ArchivePage = ({ location, data }) => {
     </Layout>
   );
 };
+
 ArchivePage.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
@@ -241,3 +235,26 @@ ArchivePage.propTypes = {
 
 export default ArchivePage;
 
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            tech
+            github
+            external
+            ios
+            android
+            company
+            date
+          }
+        }
+      }
+    }
+  }
+`;

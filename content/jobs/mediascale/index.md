@@ -5,6 +5,9 @@ company: 'MediaScale'
 location: 'Wyoming, United States'
 range: 'October 2024 – Present'
 url: 'https://www.mediascale.net/' # أو أي لينك حقيقي تستخدمه
+slug: '/gatsby-tags'
+tags: ['gatsby', 'react', 'tutorial']
+draft: false
 ---
 
 - Founded and built MediaScale, a creative studio focused on high-impact video content, brand storytelling, and digital campaigns

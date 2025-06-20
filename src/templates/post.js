@@ -9,12 +9,14 @@ import { Layout } from '@components';
 const StyledPostContainer = styled.main`
   max-width: 1000px;
 `;
+
 const StyledPostHeader = styled.header`
   margin-bottom: 50px;
   .tag {
     margin-right: 10px;
   }
 `;
+
 const StyledPostContent = styled.div`
   margin-bottom: 100px;
   h1,
@@ -51,6 +53,18 @@ const StyledPostContent = styled.div`
 `;
 
 const PostTemplate = ({ data, location }) => {
+  if (!data?.markdownRemark) {
+    return (
+      <Layout location={location}>
+        <Helmet title="Post not found" />
+        <StyledPostContainer>
+          <h1>Post not found</h1>
+          <Link to="/pensieve">← Back to all memories</Link>
+        </StyledPostContainer>
+      </Layout>
+    );
+  }
+
   const { frontmatter, html } = data.markdownRemark;
   const { title, date, tags } = frontmatter;
 
@@ -99,14 +113,12 @@ PostTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $path } }) {
+  query ($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
-        description
         date
-        slug
         tags
       }
     }

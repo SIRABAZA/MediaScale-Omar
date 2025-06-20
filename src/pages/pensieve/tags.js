@@ -12,6 +12,7 @@ const StyledTagsContainer = styled.main`
   h1 {
     margin-bottom: 50px;
   }
+
   ul {
     color: var(--light-slate);
 
@@ -31,34 +32,38 @@ const StyledTagsContainer = styled.main`
   }
 `;
 
-const TagsPage = ({
-  data: {
-    allMarkdownRemark: { group },
-  },
-  location,
-}) => (
-  <Layout location={location}>
-    <Helmet title="Tags" />
+const TagsPage = ({ data, location }) => {
+  const group = data?.allMarkdownRemark?.group || [];
 
-    <StyledTagsContainer>
-      <span className="breadcrumb">
-        <span className="arrow">&larr;</span>
-        <Link to="/pensieve">All memories</Link>
-      </span>
+  return (
+    <Layout location={location}>
+      <Helmet title="Tags" />
 
-      <h1>Tags</h1>
-      <ul className="fancy-list">
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/pensieve/tags/${kebabCase(tag.fieldValue)}/`} className="inline-link">
-              {tag.fieldValue} <span className="count">({tag.totalCount})</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </StyledTagsContainer>
-  </Layout>
-);
+      <StyledTagsContainer>
+        <span className="breadcrumb">
+          <span className="arrow">&larr;</span>
+          <Link to="/pensieve">All memories</Link>
+        </span>
+
+        <h1>Tags</h1>
+
+        {group.length > 0 ? (
+          <ul className="fancy-list">
+            {group.map(tag => (
+              <li key={tag.fieldValue}>
+                <Link to={`/pensieve/tags/${kebabCase(tag.fieldValue)}/`} className="inline-link">
+                  {tag.fieldValue} <span className="count">({tag.totalCount})</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No tags found.</p>
+        )}
+      </StyledTagsContainer>
+    </Layout>
+  );
+};
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
@@ -69,11 +74,6 @@ TagsPage.propTypes = {
           totalCount: PropTypes.number.isRequired,
         }).isRequired,
       ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
     }),
   }),
   location: PropTypes.object,
