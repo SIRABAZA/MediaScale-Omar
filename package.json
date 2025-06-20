@@ -20,8 +20,7 @@
   "serve": "gatsby serve",
   "clean": "gatsby clean",
   "prepare": "husky install",
-  "lint-staged": "lint-staged",
-  "preinstall": "npx npm-force-resolutions"
+  "lint-staged": "lint-staged"
 },
   "lint-staged": {
     "*.{js,css,json,md}": [
