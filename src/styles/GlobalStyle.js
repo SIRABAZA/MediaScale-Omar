@@ -74,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--navy);
+    background-color: transparent;
     color: var(--slate);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
@@ -109,6 +109,7 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: 100%;
+    background: transparent;
   }
 
   main {
