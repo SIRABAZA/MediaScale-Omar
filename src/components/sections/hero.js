@@ -65,7 +65,7 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a creative director and video editor, currently leading{' '}
+        I'm a creative director and video editor, currently leading{' '}
         <a href="https://mediascale.net" target="_blank" rel="noreferrer">
           MediaScale
         </a>
@@ -75,13 +75,39 @@ const Hero = () => {
     </>
   );
   const five = (
-    <a
-      className="email-link"
-      href="mailto:Omarzidan@mediascale.net"
-      target="_blank"
-      rel="noreferrer">
-      Let’s create something great.
-    </a>
+    <div
+      style={{
+        display: 'flex',
+        gap: '20px',
+        flexWrap: 'wrap',
+        justifyContent: 'flex-start',
+        marginTop: '50px',
+      }}>
+      <a
+        className="email-link"
+        href="mailto:Omarzidan@mediascale.net"
+        target="_blank"
+        rel="noreferrer">
+        Let's create something great.
+      </a>
+      <a
+        className="email-link"
+        href="https://form.typeform.com/to/SPcDg0QM"
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          backgroundColor: 'transparent',
+          border: '1px solid var(--green)',
+          color: 'var(--green)',
+          transition: 'all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1)',
+          '&:hover': {
+            backgroundColor: 'var(--green-tint)',
+            transform: 'translate(-4px, -4px)',
+          },
+        }}>
+        Start a Project
+      </a>
+    </div>
   );
 
   const items = [one, two, three, four, five];

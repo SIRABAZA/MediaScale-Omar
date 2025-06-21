@@ -39,6 +39,49 @@ const StyledContactSection = styled.section`
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
   }
+
+  .typeform-container {
+    margin-top: 50px;
+    width: 100%;
+    height: 500px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px -10px var(--navy-shadow);
+    border: 1px solid var(--lightest-navy);
+
+    @media (max-width: 768px) {
+      height: 400px;
+    }
+  }
+
+  .typeform-embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .contact-info {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--light-navy);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--lightest-navy);
+
+    p {
+      margin: 0;
+      font-size: var(--fz-sm);
+      color: var(--light-slate);
+
+      a {
+        color: var(--green);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 `;
 
 const Contact = () => {
@@ -55,18 +98,37 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">What’s Next?</h2>
+      <h2 className="numbered-heading overline">What's Next?</h2>
 
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        Although I’m not currently looking for any new opportunities, my inbox is always open.
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+        Ready to bring your vision to life? Let's discuss your project and create something amazing
+        together. Fill out the form below and I'll get back to you within 24 hours!
       </p>
 
-      <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
-      </a>
+      <div className="typeform-container">
+        <iframe
+          className="typeform-embed"
+          src="https://form.typeform.com/to/SPcDg0QM"
+          frameBorder="0"
+          allowFullScreen
+          title="Contact Form"
+        />
+      </div>
+
+      <div className="contact-info">
+        <p>
+          <strong>Quick Contact:</strong> Prefer email?{' '}
+          <a href={`mailto:${email}`}>Send me a direct message</a> or connect on{' '}
+          <a href="https://www.linkedin.com/in/omar-ziidan/" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+        </p>
+        <p style={{ marginTop: '10px', fontSize: 'var(--fz-xs)' }}>
+          Response time: Within 24 hours • Available for new projects
+        </p>
+      </div>
     </StyledContactSection>
   );
 };
